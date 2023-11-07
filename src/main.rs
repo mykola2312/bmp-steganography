@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 use byteorder::{ReadBytesExt, WriteBytesExt, LE};
 use std::{
     fs::{File, OpenOptions},
@@ -253,7 +253,7 @@ impl FileBitWriter {
     pub fn write_bits(&mut self, mut bits: u8, len: u8) -> Result<()> {
         assert!(len > 0 && len <= 8);
 
-        for i in 0..len {
+        for _ in 0..len {
             self.write_bit(bits & 1)?;
             bits >>= 1;
         }
